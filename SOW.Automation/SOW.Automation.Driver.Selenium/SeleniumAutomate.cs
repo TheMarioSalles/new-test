@@ -4,7 +4,6 @@ using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Support.UI;
-using SOW.Automation.Common;
 using SOW.Automation.Common.Web;
 using System;
 using System.Collections.Generic;
@@ -14,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace SOW.Automation.Driver.Selenium
 {
-    public class SeleniumAutomate<T> : DriverBase, IAutomationElement<T> where T : IWebElement
+    public class SeleniumAutomate<T> : DriverBase, IWebAutomationElement<T> where T : IWebElement
     {
         private WebDriverContextInfo _driverContextInfo;
 
@@ -34,71 +33,152 @@ namespace SOW.Automation.Driver.Selenium
 
         public SeleniumAutomate(WebDriverContextInfo config)
         {
-            this.DriverContextInfo = config;
-
-            InicializeDriver();
-        }
-
-        public void CloseProcess()
-        {
-            this.WebDriver.Close();
-        }
-
-        public void InicializeDriver()
-        {
-            switch (this.DriverContextInfo.Browser)
+            try
             {
-                case BrowserEnum.Chrome:
-                    this.WebDriver = new ChromeDriver();
-                    break;
-                case BrowserEnum.Edge:
-                    this.WebDriver = new EdgeDriver();
-                    break;
-                case BrowserEnum.FireFox:
-                    this.WebDriver = new FirefoxDriver();
-                    break;
-                case BrowserEnum.InternetExplorer:
-                    this.WebDriver = new InternetExplorerDriver();
-                    break;
-                default:
-                    this.WebDriver = new ChromeDriver();
-                    break;
+                this.DriverContextInfo = config;
+                InicializeDriver(this.DriverContextInfo.Timeout);
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
 
-        public void InsertTextInLabelByID(string labelID, string inputText, int seconds)
+        public void CloseProcess(int seconds)
         {
-            this.WebDriver.FindElement(By.Id(labelID)).SendKeys(inputText);
+            try
+            {
+                this.WebDriver.Close();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
-        public void InsertTextInLabelByName(string labelName, string inputText, int seconds)
+        public void InicializeDriver(int seconds)
         {
-            this.WebDriver.FindElement(By.Name(labelName)).SendKeys(inputText);
+            try
+            {
+                switch (this.DriverContextInfo.Browser)
+                {
+                    case BrowserEnum.Chrome:
+                        this.WebDriver = new ChromeDriver();
+                        break;
+                    case BrowserEnum.Edge:
+                        this.WebDriver = new EdgeDriver();
+                        break;
+                    case BrowserEnum.FireFox:
+                        this.WebDriver = new FirefoxDriver();
+                        break;
+                    case BrowserEnum.InternetExplorer:
+                        this.WebDriver = new InternetExplorerDriver();
+                        break;
+                    default:
+                        this.WebDriver = new ChromeDriver();
+                        break;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void InsertTextByID(string fieldID, string inputText, int seconds)
+        {
+            try
+            {
+                this.WebDriver.FindElement(By.Id(fieldID)).SendKeys(inputText);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void InsertTextByName(string fieldName, string inputText, int seconds)
+        {
+            try
+            {
+                this.WebDriver.FindElement(By.Name(fieldName)).SendKeys(inputText);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void InsertTextByClassName(string fieldClassName, string inputText, int seconds)
+        {
+            try
+            {
+                this.WebDriver.FindElement(By.ClassName(fieldClassName)).SendKeys(inputText);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public void OpenURL(string url, int seconds)
         {
-            this.WebDriver.Navigate().GoToUrl(url);
+            try
+            {
+                this.WebDriver.Navigate().GoToUrl(url);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public void SearchAndClickByID(string ID, int seconds)
         {
-            this.WebDriver.FindElement(By.Id(ID)).Click();
+            try
+            {
+                this.WebDriver.FindElement(By.Id(ID)).Click();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public T SearchAndReturnByID(string ID, int seconds)
         {
-            return (T)this.WebDriver.FindElement(By.Id(ID));
+            try
+            {
+                return (T)this.WebDriver.FindElement(By.Id(ID));
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
-        public void TakeDefaultWindow()
+        public void TakeDefaultWindow(int seconds)
         {
-            //TODO
+            try
+            {
+                throw new NotImplementedException();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
-        public void TakeScreenshot(string path, string name, bool printTimeSpan)
+        public void TakeScreenshot(string path, string name, bool printTimeSpan, int seconds)
         {
-            //TODO
+            try
+            {
+                throw new NotImplementedException();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3316FD44-741C-4DE4-8841-F2BDCE50E09A}</ProjectGuid>
+    <ProjectGuid>{7FD1C5BA-BD42-4E29-9C74-5F80085BC88F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SOW.Automation.Interface.Tasy</RootNamespace>
     <AssemblyName>SOW.Automation.Interface.Tasy</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,20 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Pages\BasePages.cs" />
-    <Compile Include="Pages\LoginPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\SOW.Automation.Common\SOW.Automation.Common.csproj">
-      <Project>{05CA1DEC-B508-4455-AD76-163EE4274303}</Project>
-      <Name>SOW.Automation.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SOW.Automation.Platform.WEB\SOW.Automation.Platform.WEB.csproj">
-      <Project>{30807035-5767-4167-9b24-22039d4141f5}</Project>
-      <Name>SOW.Automation.Platform.WEB</Name>
-    </ProjectReference>
+    <Folder Include="Windows\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

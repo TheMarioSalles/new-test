@@ -15,6 +15,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOW.Automation.Interface.Mo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOW.Automation.Driver.TestStack", "SOW.Automation.Driver.TestStack\SOW.Automation.Driver.TestStack.csproj", "{773C6F84-76D6-4A13-9907-C60EC301000D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOW.Automation.Service.Tasy", "SOW.Automation.Service.Tasy\SOW.Automation.Service.Tasy.csproj", "{59776340-CAF3-4DB9-AA17-6D43E7E807DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOW.Automation.Robot.Tasy", "SOW.Automation.Robot.Tasy\SOW.Automation.Robot.Tasy.csproj", "{C2F1DC2B-376F-490D-919E-7D0EFC59D9AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOW.Automation.Interface.Tasy", "SOW.Automation.Interface.Tasy\SOW.Automation.Interface.Tasy.csproj", "{7FD1C5BA-BD42-4E29-9C74-5F80085BC88F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +51,18 @@ Global
 		{773C6F84-76D6-4A13-9907-C60EC301000D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{773C6F84-76D6-4A13-9907-C60EC301000D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{773C6F84-76D6-4A13-9907-C60EC301000D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59776340-CAF3-4DB9-AA17-6D43E7E807DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59776340-CAF3-4DB9-AA17-6D43E7E807DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59776340-CAF3-4DB9-AA17-6D43E7E807DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59776340-CAF3-4DB9-AA17-6D43E7E807DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2F1DC2B-376F-490D-919E-7D0EFC59D9AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2F1DC2B-376F-490D-919E-7D0EFC59D9AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2F1DC2B-376F-490D-919E-7D0EFC59D9AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2F1DC2B-376F-490D-919E-7D0EFC59D9AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FD1C5BA-BD42-4E29-9C74-5F80085BC88F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FD1C5BA-BD42-4E29-9C74-5F80085BC88F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FD1C5BA-BD42-4E29-9C74-5F80085BC88F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FD1C5BA-BD42-4E29-9C74-5F80085BC88F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -38,12 +38,12 @@ namespace SOW.Automation.Interface.MondelezAra.Pages
 
         public void PreencherCampoTextoUsuario(string value)
         {
-            this.AutomationService.BaseWebElement.InsertTextInLabelByID("TextBox_Usuario", value, this.DriverContextInfo.Timeout);
+            this.AutomationService.BaseWebElement.InsertTextByID("TextBox_Usuario", value, this.DriverContextInfo.Timeout);
         }
 
         public void PreencherCampoTextoSenha(string value)
         {
-            this.AutomationService.BaseWebElement.InsertTextInLabelByID("TextBox2", value, this.DriverContextInfo.Timeout);
+            this.AutomationService.BaseWebElement.InsertTextByID("TextBox2", value, this.DriverContextInfo.Timeout);
         }
 
         public void ClicarBotaoEntrar()

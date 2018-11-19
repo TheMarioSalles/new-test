@@ -1,13 +1,13 @@
-﻿using SOW.Automation.Common;
-using SOW.Automation.Common.Desktop;
+﻿using SOW.Automation.Common.Desktop;
 using TestStack.White;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.Finders;
 using TestStack.White.UIItems.WindowItems;
+using static TestStack.White.WindowsAPI.KeyboardInput;
 
 namespace SOW.Automation.Driver.TestStack
 {
-    public class TestStackAutomate<T> : IAutomationElementTestStack<T> where T : IUIItem
+    public class TestStackAutomate<T> : IDesktopAutomationElement<T> where T : IUIItem
     {
         private Application _application;
         public Application Application { get { return _application; } set { _application = value; } }
@@ -106,11 +106,6 @@ namespace SOW.Automation.Driver.TestStack
             }
         }
 
-        /// <summary>
-        /// It does nothing in Desktop level usage
-        /// </summary>
-        public void OpenURL(string url, int seconds) { }
-
         public void OpenApplication(string url, int seconds)
         {
             //Application
@@ -162,7 +157,9 @@ namespace SOW.Automation.Driver.TestStack
         {
             try
             {
-                //this.Window.Keyboard.PressSpecialKey();
+                this.Window.Keyboard.HoldKey(SpecialKeys.LWIN);
+                this.Window.Keyboard.PressSpecialKey(SpecialKeys.PRINTSCREEN);
+                this.Window.Keyboard.LeaveKey(SpecialKeys.LWIN);
             }
             catch (System.Exception)
             {

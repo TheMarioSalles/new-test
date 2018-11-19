@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SOW.Automation.Interface.Tasy")]
+[assembly: AssemblyTitle("SOW.Automation.Service.Tasy")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("HP Inc.")]
-[assembly: AssemblyProduct("SOW.Automation.Interface.Tasy")]
+[assembly: AssemblyProduct("SOW.Automation.Service.Tasy")]
 [assembly: AssemblyCopyright("Copyright © HP Inc. 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("7fd1c5ba-bd42-4e29-9c74-5f80085bc88f")]
+[assembly: Guid("59776340-caf3-4db9-aa17-6d43e7e807dc")]
 
 // Version information for an assembly consists of the following four values:
 //

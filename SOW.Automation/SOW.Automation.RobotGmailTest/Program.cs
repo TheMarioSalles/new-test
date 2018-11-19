@@ -23,7 +23,7 @@ namespace SOW.Automation.Robot.DHL
             });
             loginPage.OpenURL("http://169.57.166.44/mondelez_ara/", loginPage.DriverContextInfo);
             loginPage.EfetuarLogin("andre.l.dasilva@dhl.com", "Pri@1908");
-            loginPage.Close();
+            loginPage.Close(loginPage.DriverContextInfo);
 
             //loginPage.Close();
 
