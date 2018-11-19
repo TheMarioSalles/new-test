@@ -7,45 +7,96 @@ using TestStack.White.UIItems.WindowItems;
 
 namespace SOW.Automation.Driver.TestStack
 {
-    public class TestStackAutomate<T> : IAutomationElement<T> where T : IUIItem
+    public class TestStackAutomate<T> : IAutomationElementTestStack<T> where T : IUIItem
     {
-        private DesktopDriverContextInfo _driverContextInfo;
-
-        public DesktopDriverContextInfo DriverContextInfo
-        {
-            get { return _driverContextInfo; }
-            set { _driverContextInfo = value; }
-        }
+        private Application _application;
+        public Application Application { get { return _application; } set { _application = value; } }
 
         private Window _window;
+        public Window Window { get { return _window; } set { _window = value; } }
 
-        public Window Window
+        private DesktopDriverContextInfo _driverContextInfo;
+        public DesktopDriverContextInfo DriverContextInfo { get { return _driverContextInfo; } set { _driverContextInfo = value; } }
+
+        public TestStackAutomate(DesktopDriverContextInfo config, string fullApplicationPath)
         {
-            get { return _window; }
-            set { _window = value; }
+            try 
+	        {	        
+                this.DriverContextInfo = config;
+
+                InicializeDriver(fullApplicationPath);
+	        }
+	        catch (System.Exception)
+	        {
+		        throw;
+	        }
         }
 
-        public TestStackAutomate(DesktopDriverContextInfo config)
-        {
-            this.DriverContextInfo = config;
-
-            InicializeDriver();
+        public void CloseProcess() {
+            try
+            {
+                this.Application.Close();
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
         }
 
-        public void CloseProcess() { this.Window.Close(); }
+        public void CloseWindow (int timeout)
+        {
+            try
+            {
+                this.Window.Close();
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
+        }
+
+        public void CloseWindow(string title, int timeout)
+        {
+            try
+            {
+                this.Application.GetWindow(title).Close();
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
+        }
 
         public void InicializeDriver() { }
 
+        public void InicializeDriver(string fullPath) {
+            this.Application = Application.AttachOrLaunch(new System.Diagnostics.ProcessStartInfo(fullPath));
+        }
+
         public void InsertTextInLabelByID(string labelID, string inputText, int seconds)
         {
-            this.Window.GetElement(SearchCriteria.ByAutomationId(labelID)).SetFocus();
-            this.Window.Keyboard.Enter(inputText);
+            try
+            {
+                this.Window.GetElement(SearchCriteria.ByAutomationId(labelID)).SetFocus();
+                this.Window.Keyboard.Enter(inputText);
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
         }
 
         public void InsertTextInLabelByName(string labelName, string inputText, int seconds)
         {
-            this.Window.GetElement(SearchCriteria.ByClassName(labelName)).SetFocus();
-            this.Window.Keyboard.Enter(inputText);
+            try
+            {
+                this.Window.GetElement(SearchCriteria.ByClassName(labelName)).SetFocus();
+                this.Window.Keyboard.Enter(inputText);
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
         }
 
         /// <summary>
@@ -58,25 +109,52 @@ namespace SOW.Automation.Driver.TestStack
             //Application
         }
 
+        public void OpenWindow(string url, int seconds)
+        {
+            //Application
+        }
+
         public void SearchAndClickByID(string ID, int seconds)
         {
-            this.Window.Mouse.Location = this.Window.GetElement(SearchCriteria.ByAutomationId(ID)).GetClickablePoint();
-            this.Window.Mouse.Click();
+            try
+            {
+                this.Window.Mouse.Location = this.Window.GetElement(SearchCriteria.ByAutomationId(ID)).GetClickablePoint();
+                this.Window.Mouse.Click();
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
         }
 
         public T SearchAndReturnByID(string ID, int seconds)
         {
-            return (T)this.Window.GetMultiple(SearchCriteria.ByAutomationId(ID))[0];// (T)this.Window.GetElement(SearchCriteria.ByAutomationId(ID));
+            try
+            {
+                return (T)this.Window.GetMultiple(SearchCriteria.ByAutomationId(ID))[0];// (T)this.Window.GetElement(SearchCriteria.ByAutomationId(ID));
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
         }
 
         public void TakeDefaultWindow()
         {
-            this.Window.Focus();
+            try
+            {
+                this.Window.Focus();
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
         }
 
         public void TakeScreenshot(string path, string name, bool printTimeSpan)
         {
             //this.Window.Keyboard.PressSpecialKey()
         }
+
     }
 }
