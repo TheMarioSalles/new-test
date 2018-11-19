@@ -55,11 +55,21 @@
     <Reference Include="TestStack.White.ScreenObjects, Version=0.13.0.0, Culture=neutral, PublicKeyToken=2672efbf3e161801, processorArchitecture=MSIL">
       <HintPath>..\packages\TestStack.White.ScreenObjects.0.13.3\lib\net40\TestStack.White.ScreenObjects.dll</HintPath>
     </Reference>
-    <Reference Include="UIAutomationClient" />
-    <Reference Include="UIAutomationClientsideProviders" />
-    <Reference Include="UIAutomationProvider" />
-    <Reference Include="UIAutomationTypes" />
-    <Reference Include="WindowsBase" />
+    <Reference Include="UIAutomationClient">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="UIAutomationClientsideProviders">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="UIAutomationProvider">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="UIAutomationTypes">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IAutomationElementTestStack.cs" />
