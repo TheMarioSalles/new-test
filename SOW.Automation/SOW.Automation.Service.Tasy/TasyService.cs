@@ -5,9 +5,6 @@ using TestStack.White.UIItems;
 
 namespace SOW.Automation.Service.Tasy
 {
-    /// <summary>
-    /// Class
-    /// </summary>
     public class TasyService
     {
         private DesktopDriverContextInfo _driverContextInfo;
@@ -18,7 +15,7 @@ namespace SOW.Automation.Service.Tasy
             set { _driverContextInfo = value; }
         }
 
-        public IAutomationElement<IUIItem> BaseWebElement { get; private set; }
+        public IDesktopAutomationElement<IUIItem> BaseElement { get; private set; }
 
         public TasyService(DesktopDriverContextInfo context)
         {
@@ -32,7 +29,7 @@ namespace SOW.Automation.Service.Tasy
             switch (this.DriverContextInfo.Driver)
             {
                 case DriverEnum.TestStack:
-                    BaseWebElement = new TestStackAutomate<IUIItem>(this.DriverContextInfo);
+                    BaseElement = new TestStackAutomate<IUIItem>(this.DriverContextInfo);
                 break;
                 //TODO
                 //case DriverEnum.UIAutomation:

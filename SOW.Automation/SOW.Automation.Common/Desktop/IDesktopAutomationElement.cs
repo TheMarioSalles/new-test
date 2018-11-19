@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SOW.Automation.Common.Desktop
+﻿namespace SOW.Automation.Common.Desktop
 {
     public interface IDesktopAutomationElement<T>
     {
