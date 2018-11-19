@@ -34,13 +34,6 @@
     <Reference Include="Castle.Core">
       <HintPath>..\..\..\..\Sow\Development\SOW.Automation\SOW.Automation\SOW.Automation.Driver.TestStack\bin\Debug\Castle.Core.dll</HintPath>
     </Reference>
-    <Reference Include="SOW.Automation.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Users\msalles\Projects\Sow\Development\SOW.Automation\SOW.Automation\SOW.Automation.Common\bin\Debug\SOW.Automation.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="SOW.Automation.Driver.TestStack">
-      <HintPath>..\..\..\..\Sow\Development\SOW.Automation\SOW.Automation\SOW.Automation.Driver.TestStack\bin\Debug\SOW.Automation.Driver.TestStack.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -60,8 +53,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TasyService.cs" />
+    <Compile Include="DesktopService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SOW.Automation.Common\SOW.Automation.Common.csproj">
+      <Project>{05ca1dec-b508-4455-ad76-163ee4274303}</Project>
+      <Name>SOW.Automation.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SOW.Automation.Driver.TestStack\SOW.Automation.Driver.TestStack.csproj">
+      <Project>{773c6f84-76d6-4a13-9907-c60ec301000d}</Project>
+      <Name>SOW.Automation.Driver.TestStack</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

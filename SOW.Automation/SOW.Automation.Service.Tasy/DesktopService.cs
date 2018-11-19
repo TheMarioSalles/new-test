@@ -5,7 +5,7 @@ using TestStack.White.UIItems;
 
 namespace SOW.Automation.Service.Tasy
 {
-    public class TasyService
+    public class DesktopService
     {
         private DesktopDriverContextInfo _driverContextInfo;
 
@@ -15,9 +15,9 @@ namespace SOW.Automation.Service.Tasy
             set { _driverContextInfo = value; }
         }
 
-        public IDesktopAutomationElement<IUIItem> BaseElement { get; private set; }
+        public IDesktopExtendElement<IUIItem> BaseElement;
 
-        public TasyService(DesktopDriverContextInfo context)
+        public DesktopService(DesktopDriverContextInfo context)
         {
             this.DriverContextInfo = context;
 

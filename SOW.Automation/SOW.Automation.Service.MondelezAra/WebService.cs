@@ -5,7 +5,7 @@ using SOW.Automation.Driver.Selenium;
 
 namespace SOW.Automation.Service.MondelezAra
 {
-    public class MondelezAraService
+    public class WebService
     {
         private WebDriverContextInfo _driverContextInfo;
 
@@ -15,9 +15,9 @@ namespace SOW.Automation.Service.MondelezAra
             set { _driverContextInfo = value; }
         }
 
-        public IWebAutomationElement<IWebElement> BaseWebElement { get; private set; }
+        public IWebBaseElement<IWebElement> BaseWebElement { get; private set; }
 
-        public MondelezAraService(WebDriverContextInfo context)
+        public WebService(WebDriverContextInfo context)
         {
             this.DriverContextInfo = context;
 

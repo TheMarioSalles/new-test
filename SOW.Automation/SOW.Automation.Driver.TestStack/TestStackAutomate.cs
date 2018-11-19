@@ -7,7 +7,7 @@ using static TestStack.White.WindowsAPI.KeyboardInput;
 
 namespace SOW.Automation.Driver.TestStack
 {
-    public class TestStackAutomate<T> : IDesktopAutomationElement<T> where T : IUIItem
+    public class TestStackAutomate<T> : IDesktopExtendElement<T> where T : IUIItem
     {
         private Application _application;
         public Application Application { get { return _application; } set { _application = value; } }
@@ -18,13 +18,11 @@ namespace SOW.Automation.Driver.TestStack
         private DesktopDriverContextInfo _driverContextInfo;
         public DesktopDriverContextInfo DriverContextInfo { get { return _driverContextInfo; } set { _driverContextInfo = value; } }
 
-        public TestStackAutomate(DesktopDriverContextInfo config, string fullApplicationPath)
+        public TestStackAutomate(DesktopDriverContextInfo config)
         {
             try 
 	        {	        
                 this.DriverContextInfo = config;
-
-                InicializeDriver(fullApplicationPath);
 	        }
 	        catch (System.Exception)
 	        {
@@ -32,7 +30,7 @@ namespace SOW.Automation.Driver.TestStack
 	        }
         }
 
-        public void CloseProcess() {
+        public void CloseProcess(int seconds) {
             try
             {
                 this.Application.Close();
@@ -67,9 +65,9 @@ namespace SOW.Automation.Driver.TestStack
             }
         }
 
-        public void InicializeDriver() { }
+        public void InicializeDriver(int seconds) { }
 
-        public void InicializeDriver(string fullPath) {
+        public void InicializeDriver(string fullPath, int seconds) {
             try
             {
                 this.Application = Application.AttachOrLaunch(new System.Diagnostics.ProcessStartInfo(fullPath));
@@ -80,11 +78,11 @@ namespace SOW.Automation.Driver.TestStack
             }
         }
 
-        public void InsertTextInLabelByID(string labelID, string inputText, int seconds)
+        public void InsertTextByID(string fieldID, string inputText, int seconds)
         {
             try
             {
-                this.Window.GetElement(SearchCriteria.ByAutomationId(labelID)).SetFocus();
+                this.Window.GetElement(SearchCriteria.ByAutomationId(fieldID)).SetFocus();
                 this.Window.Keyboard.Enter(inputText);
             }
             catch (System.Exception)
@@ -93,11 +91,26 @@ namespace SOW.Automation.Driver.TestStack
             }
         }
 
-        public void InsertTextInLabelByName(string labelName, string inputText, int seconds)
+        public void InsertTextByName(string fieldName, string inputText, int seconds)
+        {
+            throw new System.NotImplementedException();
+            //
+            //try
+            //{
+            //    this.Window.GetElement(SearchCriteria.(fieldName)).SetFocus();
+            //    this.Window.Keyboard.Enter(inputText);
+            //}
+            //catch (System.Exception)
+            //{
+            //    throw;
+            //}
+        }
+
+        public void InsertTextByClassName(string fieldClassName, string inputText, int seconds)
         {
             try
             {
-                this.Window.GetElement(SearchCriteria.ByClassName(labelName)).SetFocus();
+                this.Window.GetElement(SearchCriteria.ByClassName(fieldClassName)).SetFocus();
                 this.Window.Keyboard.Enter(inputText);
             }
             catch (System.Exception)
@@ -141,7 +154,7 @@ namespace SOW.Automation.Driver.TestStack
             }
         }
 
-        public void TakeDefaultWindow()
+        public void TakeDefaultWindow(int seconds)
         {
             try
             {
@@ -153,7 +166,7 @@ namespace SOW.Automation.Driver.TestStack
             }
         }
 
-        public void TakeScreenshot(string path, string name, bool printTimeSpan)
+        public void TakeScreenshot(string path, string name, bool printTimeSpan, int seconds)
         {
             try
             {
@@ -166,6 +179,5 @@ namespace SOW.Automation.Driver.TestStack
                 throw;
             }
         }
-
     }
 }

@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace SOW.Automation.Driver.Selenium
 {
-    public class SeleniumAutomate<T> : DriverBase, IWebAutomationElement<T> where T : IWebElement
+    public class SeleniumAutomate<T> : DriverBase, IWebBaseElement<T> where T : IWebElement
     {
         private WebDriverContextInfo _driverContextInfo;
 
