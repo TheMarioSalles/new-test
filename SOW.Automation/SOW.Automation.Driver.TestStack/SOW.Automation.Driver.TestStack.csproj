@@ -62,6 +62,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IAutomationElementTestStack.cs" />
     <Compile Include="TestStackAutomate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
