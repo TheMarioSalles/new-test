@@ -70,7 +70,14 @@ namespace SOW.Automation.Driver.TestStack
         public void InicializeDriver() { }
 
         public void InicializeDriver(string fullPath) {
-            this.Application = Application.AttachOrLaunch(new System.Diagnostics.ProcessStartInfo(fullPath));
+            try
+            {
+                this.Application = Application.AttachOrLaunch(new System.Diagnostics.ProcessStartInfo(fullPath));
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
         }
 
         public void InsertTextInLabelByID(string labelID, string inputText, int seconds)
@@ -153,7 +160,14 @@ namespace SOW.Automation.Driver.TestStack
 
         public void TakeScreenshot(string path, string name, bool printTimeSpan)
         {
-            //this.Window.Keyboard.PressSpecialKey()
+            try
+            {
+                //this.Window.Keyboard.PressSpecialKey();
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
         }
 
     }
