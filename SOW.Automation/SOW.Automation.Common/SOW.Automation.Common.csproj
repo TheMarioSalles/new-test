@@ -41,12 +41,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Desktop\DesktopDriverContextInfo.cs" />
-    <Compile Include="Desktop\IDesktopAutomationElement.cs" />
+    <Compile Include="Desktop\IDesktopExtendElement.cs" />
+    <Compile Include="Desktop\IDesktopBaseElement.cs" />
     <Compile Include="DriverContextInfo.cs" />
-    <Compile Include="IAutomationElementBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Web\BrowserEnum.cs" />
-    <Compile Include="Web\IWebAutomationElement.cs" />
+    <Compile Include="Web\IWebExtendElement.cs" />
+    <Compile Include="Web\IWebBaseElement.cs" />
     <Compile Include="Web\WebDriverContextInfo.cs" />
     <Compile Include="DriverEnum.cs" />
   </ItemGroup>
