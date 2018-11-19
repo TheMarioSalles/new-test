@@ -5,6 +5,9 @@ using TestStack.White.UIItems;
 
 namespace SOW.Automation.Service.Tasy
 {
+    /// <summary>
+    /// Class
+    /// </summary>
     public class TasyService
     {
         private DesktopDriverContextInfo _driverContextInfo;
