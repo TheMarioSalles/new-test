@@ -34,8 +34,9 @@
     <Reference Include="Castle.Core">
       <HintPath>..\..\..\..\Sow\Development\SOW.Automation\SOW.Automation\SOW.Automation.Driver.TestStack\bin\Debug\Castle.Core.dll</HintPath>
     </Reference>
-    <Reference Include="SOW.Automation.Common">
-      <HintPath>..\..\..\..\Sow\Development\SOW.Automation\SOW.Automation\SOW.Automation.Driver.TestStack\bin\Debug\SOW.Automation.Common.dll</HintPath>
+    <Reference Include="SOW.Automation.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Users\msalles\Projects\Sow\Development\SOW.Automation\SOW.Automation\SOW.Automation.Common\bin\Debug\SOW.Automation.Common.dll</HintPath>
     </Reference>
     <Reference Include="SOW.Automation.Driver.TestStack">
       <HintPath>..\..\..\..\Sow\Development\SOW.Automation\SOW.Automation\SOW.Automation.Driver.TestStack\bin\Debug\SOW.Automation.Driver.TestStack.dll</HintPath>
