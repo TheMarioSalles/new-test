@@ -3,7 +3,7 @@ using SOW.Automation.Common;
 using SOW.Automation.Common.Web;
 using SOW.Automation.Driver.Selenium;
 
-namespace SOW.Automation.Service.MondelezAra
+namespace SOW.Automation.Service.Web
 {
     public class WebService
     {

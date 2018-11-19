@@ -3,7 +3,7 @@ using SOW.Automation.Common.Desktop;
 using SOW.Automation.Driver.TestStack;
 using TestStack.White.UIItems;
 
-namespace SOW.Automation.Service.Tasy
+namespace SOW.Automation.Service.Desktop
 {
     public class DesktopService
     {

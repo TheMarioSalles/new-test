@@ -1,5 +1,5 @@
 ﻿using SOW.Automation.Common.Web;
-using SOW.Automation.Service.MondelezAra;
+using SOW.Automation.Service.Web;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +10,8 @@ namespace SOW.Automation.Interface.MondelezAra.Pages
 {
     public class PageBase
     {
-        private MondelezAraService _automationService;
-        protected MondelezAraService AutomationService
+        private WebService _automationService;
+        protected WebService AutomationService
         {
             get { return _automationService; }
             set { _automationService = value; }
@@ -19,7 +19,7 @@ namespace SOW.Automation.Interface.MondelezAra.Pages
 
         public PageBase(WebDriverContextInfo driverContextInfo)
         {
-            this.AutomationService = new MondelezAraService(driverContextInfo);
+            this.AutomationService = new WebService(driverContextInfo);
         }
 
         public void OpenURL(string url, WebDriverContextInfo driverContextInfo)
