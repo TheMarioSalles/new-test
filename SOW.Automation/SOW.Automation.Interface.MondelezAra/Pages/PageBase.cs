@@ -10,8 +10,8 @@ namespace SOW.Automation.Interface.MondelezAra.Pages
 {
     public class PageBase
     {
-        private AutomationService _automationService;
-        protected AutomationService AutomationService
+        private MondelezAraService _automationService;
+        protected MondelezAraService AutomationService
         {
             get { return _automationService; }
             set { _automationService = value; }
@@ -19,7 +19,7 @@ namespace SOW.Automation.Interface.MondelezAra.Pages
 
         public PageBase(WebDriverContextInfo driverContextInfo)
         {
-            this.AutomationService = new AutomationService(driverContextInfo);
+            this.AutomationService = new MondelezAraService(driverContextInfo);
         }
 
         public void OpenURL(string url, WebDriverContextInfo driverContextInfo)
@@ -27,9 +27,9 @@ namespace SOW.Automation.Interface.MondelezAra.Pages
             this.AutomationService.BaseWebElement.OpenURL(url, driverContextInfo.Timeout);
         }
 
-        public void Close()
+        public void Close(WebDriverContextInfo driverContextInfo)
         {
-            this.AutomationService.BaseWebElement.CloseProcess();
+            this.AutomationService.BaseWebElement.CloseProcess(driverContextInfo.Timeout);
         }
     }
 }
