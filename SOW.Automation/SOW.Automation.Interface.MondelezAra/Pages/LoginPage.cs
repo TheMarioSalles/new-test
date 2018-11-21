@@ -36,6 +36,11 @@ namespace SOW.Automation.Interface.MondelezAra.Pages
             ClicarBotaoEntrar();
         }
 
+        public void PegarElemento(string value)
+        {
+            this.AutomationService.BaseWebElement.SearchAndReturnByID("TextBox_Usuario", this.DriverContextInfo.Timeout);
+        }
+
         public void PreencherCampoTextoUsuario(string value)
         {
             this.AutomationService.BaseWebElement.InsertTextByID("TextBox_Usuario", value, this.DriverContextInfo.Timeout);

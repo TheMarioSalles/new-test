@@ -25,6 +25,8 @@ namespace SOW.Automation.Robot.DHL
             loginPage.EfetuarLogin("andre.l.dasilva@dhl.com", "Pri@1908");
             loginPage.Close(loginPage.DriverContextInfo);
 
+
+
             //loginPage.Close();
 
             //loginPage.SearchAndInsertDataByID("", "");
