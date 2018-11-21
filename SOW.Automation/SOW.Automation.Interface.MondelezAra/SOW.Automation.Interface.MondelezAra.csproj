@@ -31,12 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SOW.Automation.Common">
-      <HintPath>..\SOW.Automation.Service.MondelezAra\bin\Debug\SOW.Automation.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="SOW.Automation.Service.MondelezAra">
-      <HintPath>..\SOW.Automation.Service.MondelezAra\bin\Debug\SOW.Automation.Service.MondelezAra.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -56,6 +50,16 @@
     <Compile Include="Pages\LoginPage.cs" />
     <Compile Include="Pages\PageBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SOW.Automation.Common\SOW.Automation.Common.csproj">
+      <Project>{05ca1dec-b508-4455-ad76-163ee4274303}</Project>
+      <Name>SOW.Automation.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SOW.Automation.Service.MondelezAra\SOW.Automation.Service.Web.csproj">
+      <Project>{ecd50e6e-77fb-459d-9374-595bee55b4a6}</Project>
+      <Name>SOW.Automation.Service.Web</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

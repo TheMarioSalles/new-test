@@ -31,12 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SOW.Automation.Common">
-      <HintPath>..\SOW.Automation.Driver.Selenium\bin\Debug\SOW.Automation.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="SOW.Automation.Driver.Selenium">
-      <HintPath>..\SOW.Automation.Driver.Selenium\bin\Debug\SOW.Automation.Driver.Selenium.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -55,6 +49,16 @@
   <ItemGroup>
     <Compile Include="WebService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SOW.Automation.Common\SOW.Automation.Common.csproj">
+      <Project>{05ca1dec-b508-4455-ad76-163ee4274303}</Project>
+      <Name>SOW.Automation.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SOW.Automation.Driver.Selenium\SOW.Automation.Driver.Selenium.csproj">
+      <Project>{f2a28734-6877-4494-872b-d095be519de5}</Project>
+      <Name>SOW.Automation.Driver.Selenium</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

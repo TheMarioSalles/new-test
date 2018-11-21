@@ -49,5 +49,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SOW.Automation.Common\SOW.Automation.Common.csproj">
+      <Project>{05ca1dec-b508-4455-ad76-163ee4274303}</Project>
+      <Name>SOW.Automation.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SOW.Automation.Interface.Tasy\SOW.Automation.Interface.Tasy.csproj">
+      <Project>{7fd1c5ba-bd42-4e29-9c74-5f80085bc88f}</Project>
+      <Name>SOW.Automation.Interface.Tasy</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
