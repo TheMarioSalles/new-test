@@ -51,17 +51,17 @@
     <Compile Include="Windows\WindowBase.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\SOW.Automation.Common\SOW.Automation.Common.csproj">
-      <Project>{05CA1DEC-B508-4455-AD76-163EE4274303}</Project>
+      <Project>{05ca1dec-b508-4455-ad76-163ee4274303}</Project>
       <Name>SOW.Automation.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\SOW.Automation.Service.Tasy\SOW.Automation.Service.Desktop.csproj">
-      <Project>{59776340-CAF3-4DB9-AA17-6D43E7E807DC}</Project>
+      <Project>{59776340-caf3-4db9-aa17-6d43e7e807dc}</Project>
       <Name>SOW.Automation.Service.Desktop</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
