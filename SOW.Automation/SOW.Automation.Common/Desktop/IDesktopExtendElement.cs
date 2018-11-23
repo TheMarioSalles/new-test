@@ -9,6 +9,7 @@ namespace SOW.Automation.Common.Desktop
         void CloseWindow(string url, int timeout);
         void EnterKeys(string keys, int timeout);
         void FieldFocus(T element, int timeout);
+        void HoldKey(KeyboardEnum key, int timeout);
         void InitializeDriver(int timeout);
         void InitializeDriver(string fullPath, int timeout);
         void InsertTextByClassName(string fieldClassName, string insertText, int timeout);

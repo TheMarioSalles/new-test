@@ -73,12 +73,38 @@ namespace SOW.Automation.Driver.TestStack
 
         public void EnterKeys(string keys, int timeout)
         {
-            this.Window.Keyboard.Enter(keys);
+            try
+            {
+                this.Window.Keyboard.Enter(keys);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public void FieldFocus(T element, int timeout)
         {
-            element.Focus();
+            try
+            {
+                element.Focus();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void HoldKey(KeyboardEnum key, int timeout)
+        {
+            try
+            {
+                this.Window.Keyboard.HoldKey((SpecialKeys)key);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public void InitializeDriver(int timeout) { throw new System.NotImplementedException(); }
@@ -95,12 +121,23 @@ namespace SOW.Automation.Driver.TestStack
             }
         }
 
+        public void InsertData(SearchCriteria searchCriteria, string insertData, int timeout)
+        {
+            try
+            {
+                this.Window.Get<T>(searchCriteria).SetValue(insertData);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public void InsertTextByClassName(string fieldClassName, string insertText, int timeout)
         {
             try
             {
-                this.Window.GetElement(SearchCriteria.ByClassName(fieldClassName));
-                this.Window.Keyboard.Enter(insertText);
+                this.Window.Get<T>(SearchCriteria.ByClassName(fieldClassName)).SetValue(insertText);
             }
             catch (System.Exception)
             {
@@ -112,8 +149,7 @@ namespace SOW.Automation.Driver.TestStack
         {
             try
             {
-                this.Window.GetElement(SearchCriteria.ByAutomationId(fieldID));
-                this.Window.Keyboard.Enter(insertText);
+                this.Window.Get<T>(SearchCriteria.ByAutomationId(fieldID)).SetValue(insertText);
             }
             catch (System.Exception)
             {
@@ -140,8 +176,7 @@ namespace SOW.Automation.Driver.TestStack
         {
             try
             {
-                this.Window.GetElement(SearchCriteria.ByText(fieldText)).SetFocus();
-                this.Window.Keyboard.Enter(insertText);
+                this.Window.Get<T>(SearchCriteria.ByText(fieldText)).SetValue(insertText);
             }
             catch (System.Exception)
             {
@@ -180,7 +215,14 @@ namespace SOW.Automation.Driver.TestStack
 
         public void PressKey(KeyboardEnum key, int timeout)
         {
-            this.Window.Keyboard.HoldKey((SpecialKeys)key);
+            try
+            {
+                this.Window.Keyboard.PressSpecialKey((SpecialKeys)key);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public void SearchAndClickByClassName(string fieldClassName, int timeout)
@@ -209,7 +251,14 @@ namespace SOW.Automation.Driver.TestStack
 
         public void SearchAndClickByName(string fieldName, int timeout)
         {
-            throw new NotImplementedException();
+            try
+            {
+                throw new NotImplementedException();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public void SearchAndClickByText(string inputText, int timeout)
@@ -253,7 +302,14 @@ namespace SOW.Automation.Driver.TestStack
 
         public T SearchAndReturnByName(string fieldName, int timeout)
         {
-            throw new NotImplementedException();
+            try
+            {
+                throw new NotImplementedException();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public T SearchAndReturnByText(string fieldText, int timeout)

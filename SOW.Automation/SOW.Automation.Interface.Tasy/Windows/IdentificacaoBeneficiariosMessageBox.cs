@@ -1,4 +1,5 @@
-﻿using SOW.Automation.Service.Desktop;
+﻿using SOW.Automation.Interface.Tasy.Windows.Base;
+using SOW.Automation.Service.Desktop;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,11 @@ namespace SOW.Automation.Interface.Tasy.Windows
         public IdentificacaoBeneficiariosMessageBox(DesktopService desktopService) : base(desktopService)
         {
             this.AutomationService = desktopService;
+        }
+        
+        public void ClicarBotaoOk()
+        {
+            this.AutomationService.BaseElement.SearchAndClickByText("OK", this.AutomationService.DriverContextInfo.Timeout);
         }
     }
 }

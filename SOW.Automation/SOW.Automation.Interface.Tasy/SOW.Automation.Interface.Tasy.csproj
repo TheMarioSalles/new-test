@@ -54,7 +54,7 @@
     <Compile Include="Windows\ModuloPrincipal.cs" />
     <Compile Include="Windows\IdentificacaoUsuario.cs" />
     <Compile Include="Windows\RequisicoesAutorizacao.cs" />
-    <Compile Include="Windows\WindowBase.cs" />
+    <Compile Include="Windows\Base\WindowBase.cs" />
     <Compile Include="Workflow.cs" />
   </ItemGroup>
   <ItemGroup>

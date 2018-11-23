@@ -1,13 +1,5 @@
-﻿using SOW.Automation.Common;
-using SOW.Automation.Common.Desktop;
+﻿using SOW.Automation.Interface.Tasy.Windows.Base;
 using SOW.Automation.Service.Desktop;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-
 namespace SOW.Automation.Interface.Tasy.Windows
 {
     public class IdentificacaoUsuario : WindowBase
