@@ -1,4 +1,5 @@
-﻿using SOW.Automation.Common.Desktop;
+﻿using SOW.Automation.Common;
+using SOW.Automation.Common.Desktop;
 using SOW.Automation.Service.Desktop;
 using System;
 using System.Collections.Generic;
@@ -11,25 +12,46 @@ namespace SOW.Automation.Interface.Tasy.Windows
     public class WindowBase
     {
         private DesktopService _automationService;
-        protected DesktopService AutomationService
+        public DesktopService AutomationService
         {
             get { return _automationService; }
             set { _automationService = value; }
         }
 
-        public WindowBase(DesktopDriverContextInfo driverContextInfo)
+        public WindowBase(DesktopDriverContextInfo driverContextInfo) { this.AutomationService = new DesktopService(driverContextInfo); }
+
+        public WindowBase(DesktopService desktopService) { this.AutomationService = desktopService; }
+
+        public void Close(int timeout)
         {
-            this.AutomationService = new DesktopService(driverContextInfo);
+            this.AutomationService.BaseElement.CloseProcess(timeout);
         }
 
-        public void Open(string url, DesktopDriverContextInfo driverContextInfo)
+        public void EnterKeys(string keys, int timeout)
         {
-            this.AutomationService.BaseElement.OpenWindow("Identificação de Usuário", driverContextInfo.Timeout);
+            this.AutomationService.BaseElement.EnterKeys(keys, timeout);
         }
 
-        public void Close(DesktopDriverContextInfo driverContextInfo)
+        public void LeaveKey(KeyboardEnum key, int timeout)
         {
-            this.AutomationService.BaseElement.CloseProcess(driverContextInfo.Timeout);
+            this.AutomationService.BaseElement.LeaveKey(key, timeout);
+        }
+
+        public void Open(string url, int timeout)
+        {
+            this.AutomationService.BaseElement.OpenWindow(url, timeout);
+        }
+
+        public void PressKey(KeyboardEnum key, int timeout)
+        {
+            this.AutomationService.BaseElement.PressKey(key, timeout);
+        }
+
+        public void Shortcut(KeyboardEnum key, string keys, int timeout)
+        {
+            this.AutomationService.BaseElement.PressKey(key, timeout);
+            this.AutomationService.BaseElement.EnterKeys(keys, timeout);
+            this.AutomationService.BaseElement.LeaveKey(key, timeout);
         }
     }
 }

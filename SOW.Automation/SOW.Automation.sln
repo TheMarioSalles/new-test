@@ -7,15 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOW.Automation.Driver.Selen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOW.Automation.Common", "SOW.Automation.Common\SOW.Automation.Common.csproj", "{05CA1DEC-B508-4455-AD76-163EE4274303}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOW.Automation.Robot.DHL", "SOW.Automation.RobotGmailTest\SOW.Automation.Robot.DHL.csproj", "{A80E9D76-D5F9-4D64-A89C-BA62F09DB6C1}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOW.Automation.Service.Web", "SOW.Automation.Service.MondelezAra\SOW.Automation.Service.Web.csproj", "{ECD50E6E-77FB-459D-9374-595BEE55B4A6}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOW.Automation.Interface.MondelezAra", "SOW.Automation.Interface.MondelezAra\SOW.Automation.Interface.MondelezAra.csproj", "{BC70EF06-4891-4E67-89DF-A523B62AAF03}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOW.Automation.Service.Web", "SOW.Automation.Service.Web\SOW.Automation.Service.Web.csproj", "{ECD50E6E-77FB-459D-9374-595BEE55B4A6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOW.Automation.Driver.TestStack", "SOW.Automation.Driver.TestStack\SOW.Automation.Driver.TestStack.csproj", "{773C6F84-76D6-4A13-9907-C60EC301000D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOW.Automation.Service.Desktop", "SOW.Automation.Service.Tasy\SOW.Automation.Service.Desktop.csproj", "{59776340-CAF3-4DB9-AA17-6D43E7E807DC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOW.Automation.Service.Desktop", "SOW.Automation.Service.Desktop\SOW.Automation.Service.Desktop.csproj", "{59776340-CAF3-4DB9-AA17-6D43E7E807DC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOW.Automation.Robot.Tasy", "SOW.Automation.Robot.Tasy\SOW.Automation.Robot.Tasy.csproj", "{C2F1DC2B-376F-490D-919E-7D0EFC59D9AF}"
 EndProject
@@ -35,18 +31,10 @@ Global
 		{05CA1DEC-B508-4455-AD76-163EE4274303}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05CA1DEC-B508-4455-AD76-163EE4274303}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05CA1DEC-B508-4455-AD76-163EE4274303}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A80E9D76-D5F9-4D64-A89C-BA62F09DB6C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A80E9D76-D5F9-4D64-A89C-BA62F09DB6C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A80E9D76-D5F9-4D64-A89C-BA62F09DB6C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A80E9D76-D5F9-4D64-A89C-BA62F09DB6C1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{ECD50E6E-77FB-459D-9374-595BEE55B4A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{ECD50E6E-77FB-459D-9374-595BEE55B4A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ECD50E6E-77FB-459D-9374-595BEE55B4A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ECD50E6E-77FB-459D-9374-595BEE55B4A6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BC70EF06-4891-4E67-89DF-A523B62AAF03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BC70EF06-4891-4E67-89DF-A523B62AAF03}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BC70EF06-4891-4E67-89DF-A523B62AAF03}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BC70EF06-4891-4E67-89DF-A523B62AAF03}.Release|Any CPU.Build.0 = Release|Any CPU
 		{773C6F84-76D6-4A13-9907-C60EC301000D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{773C6F84-76D6-4A13-9907-C60EC301000D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{773C6F84-76D6-4A13-9907-C60EC301000D}.Release|Any CPU.ActiveCfg = Release|Any CPU

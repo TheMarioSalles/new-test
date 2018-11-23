@@ -6,11 +6,6 @@ using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Support.UI;
 using SOW.Automation.Common.Web;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace SOW.Automation.Driver.Selenium
 {
     public class SeleniumAutomate<T> : DriverBase, IWebBaseElement<T> where T : IWebElement
@@ -85,11 +80,13 @@ namespace SOW.Automation.Driver.Selenium
             }
         }
 
-        public void InsertTextByID(string fieldID, string inputText, int seconds)
+        public void InsertTextByID(string fieldID, string inputText, int timeout)
         {
             try
             {
-                this.WebDriver.FindElement(By.Id(fieldID)).SendKeys(inputText);
+                var wait = new WebDriverWait(this.WebDriver, TimeSpan.FromSeconds(timeout))
+                    .Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists((By.Id(fieldID))));
+                wait.SendKeys(inputText);
             }
             catch (Exception)
             {
@@ -97,11 +94,13 @@ namespace SOW.Automation.Driver.Selenium
             }
         }
 
-        public void InsertTextByName(string fieldName, string inputText, int seconds)
+        public void InsertTextByName(string fieldName, string inputText, int timeout)
         {
             try
             {
-                this.WebDriver.FindElement(By.Name(fieldName)).SendKeys(inputText);
+                var wait = new WebDriverWait(this.WebDriver, TimeSpan.FromSeconds(timeout))
+                    .Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists((By.Name(fieldName))));
+                wait.SendKeys(inputText);
             }
             catch (Exception)
             {
@@ -109,11 +108,28 @@ namespace SOW.Automation.Driver.Selenium
             }
         }
 
-        public void InsertTextByClassName(string fieldClassName, string inputText, int seconds)
+        public T SearchAndReturnByTagName(string tag, int timeout)
         {
             try
             {
-                this.WebDriver.FindElement(By.ClassName(fieldClassName)).SendKeys(inputText);
+                var wait = new WebDriverWait(this.WebDriver, TimeSpan.FromSeconds(timeout))
+                .Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists((By.TagName(tag))));
+                return (T)wait;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public void InsertTextByClassName(string fieldClassName, string inputText, int timeout)
+        {
+            try
+            {
+                var wait = new WebDriverWait(this.WebDriver, TimeSpan.FromSeconds(timeout))
+                 .Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists((By.ClassName(fieldClassName))));
+                wait.SendKeys(inputText);
             }
             catch (Exception)
             {
@@ -133,11 +149,14 @@ namespace SOW.Automation.Driver.Selenium
             }
         }
 
-        public void SearchAndClickByID(string ID, int seconds)
+        public void SearchAndClickByID(string ID, int timeout)
         {
             try
             {
-                this.WebDriver.FindElement(By.Id(ID)).Click();
+                var wait = new WebDriverWait(this.WebDriver, TimeSpan.FromSeconds(timeout))
+                .Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists((By.Id(ID))));
+                wait.Click();
+
             }
             catch (Exception)
             {
@@ -145,16 +164,34 @@ namespace SOW.Automation.Driver.Selenium
             }
         }
 
-        public T SearchAndReturnByID(string ID, int seconds)
+        public T SearchAndReturnByID(string ID, int timeout)
         {
             try
             {
-                return (T)this.WebDriver.FindElement(By.Id(ID));
+                return (T)new WebDriverWait(this.WebDriver, TimeSpan.FromSeconds(timeout))
+                .Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists((By.Id(ID))));
             }
             catch (Exception)
             {
+                // A FAZER : IMPLEMENTAÇÃO DE LOG
+                return default(T);
+            }
+        }
+
+        public T SearchAndReturnByCss(string cssSelector, int timeout)
+        {
+            try
+            {
+                return (T)new WebDriverWait(this.WebDriver, TimeSpan.FromSeconds(timeout))
+                    .Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists((By.CssSelector(cssSelector))));
+
+            }
+            catch (Exception)
+            {
+
                 throw;
             }
+
         }
 
         public void TakeDefaultWindow(int seconds)

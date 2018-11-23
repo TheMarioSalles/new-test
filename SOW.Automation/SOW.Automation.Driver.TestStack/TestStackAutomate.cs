@@ -1,4 +1,7 @@
-﻿using SOW.Automation.Common.Desktop;
+﻿using SOW.Automation.Common;
+using SOW.Automation.Common.Desktop;
+using System;
+using System.Collections.Generic;
 using TestStack.White;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.Finders;
@@ -20,17 +23,20 @@ namespace SOW.Automation.Driver.TestStack
 
         public TestStackAutomate(DesktopDriverContextInfo config)
         {
-            try 
-	        {	        
+            try
+            {
                 this.DriverContextInfo = config;
-	        }
-	        catch (System.Exception)
-	        {
-		        throw;
-	        }
+
+                InitializeDriver(this.DriverContextInfo.PathDriver, this.DriverContextInfo.Timeout);
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
         }
 
-        public void CloseProcess(int seconds) {
+        public void CloseProcess(int timeout)
+        {
             try
             {
                 this.Application.Close();
@@ -41,7 +47,7 @@ namespace SOW.Automation.Driver.TestStack
             }
         }
 
-        public void CloseWindow (int timeout)
+        public void CloseWindow(int timeout)
         {
             try
             {
@@ -65,9 +71,20 @@ namespace SOW.Automation.Driver.TestStack
             }
         }
 
-        public void InicializeDriver(int seconds) { }
+        public void EnterKeys(string keys, int timeout)
+        {
+            this.Window.Keyboard.Enter(keys);
+        }
 
-        public void InicializeDriver(string fullPath, int seconds) {
+        public void FieldFocus(T element, int timeout)
+        {
+            element.Focus();
+        }
+
+        public void InitializeDriver(int timeout) { throw new System.NotImplementedException(); }
+
+        public void InitializeDriver(string fullPath, int timeout)
+        {
             try
             {
                 this.Application = Application.AttachOrLaunch(new System.Diagnostics.ProcessStartInfo(fullPath));
@@ -78,12 +95,12 @@ namespace SOW.Automation.Driver.TestStack
             }
         }
 
-        public void InsertTextByID(string fieldID, string inputText, int seconds)
+        public void InsertTextByClassName(string fieldClassName, string insertText, int timeout)
         {
             try
             {
-                this.Window.GetElement(SearchCriteria.ByAutomationId(fieldID)).SetFocus();
-                this.Window.Keyboard.Enter(inputText);
+                this.Window.GetElement(SearchCriteria.ByClassName(fieldClassName));
+                this.Window.Keyboard.Enter(insertText);
             }
             catch (System.Exception)
             {
@@ -91,7 +108,20 @@ namespace SOW.Automation.Driver.TestStack
             }
         }
 
-        public void InsertTextByName(string fieldName, string inputText, int seconds)
+        public void InsertTextByID(string fieldID, string insertText, int timeout)
+        {
+            try
+            {
+                this.Window.GetElement(SearchCriteria.ByAutomationId(fieldID));
+                this.Window.Keyboard.Enter(insertText);
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
+        }
+
+        public void InsertTextByName(string fieldName, string insertText, int timeout)
         {
             throw new System.NotImplementedException();
             //
@@ -106,12 +136,12 @@ namespace SOW.Automation.Driver.TestStack
             //}
         }
 
-        public void InsertTextByClassName(string fieldClassName, string inputText, int seconds)
+        public void InsertTextByText(string fieldText, string insertText, int timeout)
         {
             try
             {
-                this.Window.GetElement(SearchCriteria.ByClassName(fieldClassName)).SetFocus();
-                this.Window.Keyboard.Enter(inputText);
+                this.Window.GetElement(SearchCriteria.ByText(fieldText)).SetFocus();
+                this.Window.Keyboard.Enter(insertText);
             }
             catch (System.Exception)
             {
@@ -119,22 +149,45 @@ namespace SOW.Automation.Driver.TestStack
             }
         }
 
-        public void OpenApplication(string url, int seconds)
+        public void LeaveKey(KeyboardEnum key, int timeout)
         {
-            //Application
+            this.Window.Keyboard.LeaveKey((SpecialKeys)key);
         }
 
-        public void OpenWindow(string url, int seconds)
-        {
-            //Application
-        }
-
-        public void SearchAndClickByID(string ID, int seconds)
+        public void OpenApplication(string fullPath, int timeout)
         {
             try
             {
-                this.Window.Mouse.Location = this.Window.GetElement(SearchCriteria.ByAutomationId(ID)).GetClickablePoint();
-                this.Window.Mouse.Click();
+                this.Application = Application.AttachOrLaunch(new System.Diagnostics.ProcessStartInfo(fullPath));
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void OpenWindow(string url, int timeout)
+        {
+            try
+            {
+                this.Window = this.Application.GetWindow(url);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void PressKey(KeyboardEnum key, int timeout)
+        {
+            this.Window.Keyboard.HoldKey((SpecialKeys)key);
+        }
+
+        public void SearchAndClickByClassName(string fieldClassName, int timeout)
+        {
+            try
+            {
+                this.Window.Get<Button>(SearchCriteria.ByClassName(fieldClassName)).Click();
             }
             catch (System.Exception)
             {
@@ -142,11 +195,11 @@ namespace SOW.Automation.Driver.TestStack
             }
         }
 
-        public T SearchAndReturnByID(string ID, int seconds)
+        public void SearchAndClickByID(string ID, int timeout)
         {
             try
             {
-                return (T)this.Window.GetMultiple(SearchCriteria.ByAutomationId(ID))[0];// (T)this.Window.GetElement(SearchCriteria.ByAutomationId(ID));
+                this.Window.Get<Button>(SearchCriteria.ByAutomationId(ID)).Click();
             }
             catch (System.Exception)
             {
@@ -154,7 +207,73 @@ namespace SOW.Automation.Driver.TestStack
             }
         }
 
-        public void TakeDefaultWindow(int seconds)
+        public void SearchAndClickByName(string fieldName, int timeout)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SearchAndClickByText(string inputText, int timeout)
+        {
+            try
+            {
+                this.Window.Get<Button>(SearchCriteria.ByText(inputText)).Click();
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
+        }
+
+        public IList<T> SearchAndReturnByClassName(string fieldClassName, int timeout)
+        {
+            try
+            {
+                var elements = this.Window.GetMultiple(SearchCriteria.ByClassName(fieldClassName));
+                IList<T> elementsList = new List<T>();
+                foreach (var item in elements) { elementsList.Add((T)item); }
+                return elementsList;
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
+        }
+
+        public T SearchAndReturnByID(string ID, int timeout)
+        {
+            try
+            {
+                return this.Window.Get<T>(SearchCriteria.ByAutomationId(ID));
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
+        }
+
+        public T SearchAndReturnByName(string fieldName, int timeout)
+        {
+            throw new NotImplementedException();
+        }
+
+        public T SearchAndReturnByText(string fieldText, int timeout)
+        {
+            try
+            {
+                return this.Window.Get<T>(SearchCriteria.ByText(fieldText));
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
+        }
+
+        public T SearchAndReturnFirstByClassName(string fieldClassName, int timeout)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void TakeDefaultWindow(int timeout)
         {
             try
             {
@@ -166,7 +285,7 @@ namespace SOW.Automation.Driver.TestStack
             }
         }
 
-        public void TakeScreenshot(string path, string name, bool printTimeSpan, int seconds)
+        public void TakeScreenshot(string path, string name, bool printTimeSpan, int timeout)
         {
             try
             {
@@ -175,6 +294,18 @@ namespace SOW.Automation.Driver.TestStack
                 this.Window.Keyboard.LeaveKey(SpecialKeys.LWIN);
             }
             catch (System.Exception)
+            {
+                throw;
+            }
+        }
+
+        public void WaitWhileBusy(int timeout)
+        {
+            try
+            {
+                this.Window.WaitWhileBusy();
+            }
+            catch (Exception)
             {
                 throw;
             }
