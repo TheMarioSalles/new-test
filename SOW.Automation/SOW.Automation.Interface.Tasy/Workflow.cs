@@ -1,6 +1,7 @@
 ﻿using SOW.Automation.Common;
 using SOW.Automation.Common.Desktop;
 using SOW.Automation.Interface.Tasy.Windows;
+using SOW.Automation.Interface.Tasy.Windows.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
