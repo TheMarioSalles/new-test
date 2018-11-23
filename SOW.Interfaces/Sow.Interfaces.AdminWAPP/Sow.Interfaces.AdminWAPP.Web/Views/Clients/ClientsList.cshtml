@@ -1,0 +1,145 @@
+﻿@model IEnumerable<Sow.Interfaces.AdminWAPP.Domain.Dtos.Entities.ClientDto>
+
+@{
+    ViewData["Title"] = "Lista de Clientes";
+}
+<div class="x_content">
+    <!-- start accordion -->
+    <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel">
+            <div class="col-sm-10 col-xs-6">
+                <a class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <h4 class="panel-title">@ViewData["Title"]</h4>
+                </a>
+            </div>
+            <div class="col-sm-2 col-xs-6">
+                <nav class="panel-heading">
+                    <a data-toggle="modal" data-target=".new-client">Novo</a>
+                </nav>
+            </div>
+            <div class="modal fade new-client" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                            <h4 class="modal-title" id="title-new-client">Novo Cliente</h4>
+                        </div>
+                        @await Component.InvokeAsync("Client")
+                    </div>
+                </div>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Name)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Document)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.AgentsQuantity)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Accounts)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Status)
+                                </th>
+                                <th>
+                                    Editar
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if ((Model.Count().Equals(0)))
+                            {
+                                <tr>
+                                    <td colspan="6">
+                                        <p>Nenhum cliente encontrado.</p>
+                                        <p>
+                                            <a data-toggle="modal" data-target=".new-client">Deseja criar um novo <strong>Cliente</strong>?</a>
+                                        </p>
+                                    </td>
+                                </tr>
+                            }
+                            else
+                            {
+                                @foreach (var client in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => client.Name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => client.Document)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => client.AgentsQuantity)
+                                        </td>
+                                        <td>
+                                            @*<p>@client.Accounts.Count()</p>*@
+                                            @Html.ActionLink(client.Accounts.Count().ToString(), "ClientAccounts", "Clients", new { clientId = client.Id }, null)
+                                        </td>
+                                        <td>
+                                            @*@Html.ActionLink(((client.Status) ? "Ativado" : "Desativado"), "ClientAccountsList")*@
+                                            @((client.Status) ? "Ativado" : "Desativado")
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-danger" data-toggle="modal" data-target=".update-client-@client.Id">
+                                                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                            </button>
+                                            <div class="modal fade update-client-@client.Id" tabindex="-1" role="dialog" aria-hidden="true">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal">
+                                                                <span aria-hidden="true">×</span>
+                                                            </button>
+                                                            <h4 class="modal-title" id="title-new-client-@client.Id">Alterar cliente @client.Name</h4>
+                                                        </div>
+                                                        @await Component.InvokeAsync("Client", new { clientId = client.Id })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        @*<div class="panel">
+                <a class="panel-heading collapsed" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <h4 class="panel-title">Collapsible Group Items #2</h4>
+                </a>
+                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                    <div class="panel-body">
+                        <p>
+                            <strong>Collapsible Item 2 data</strong>
+                        </p>
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+                    </div>
+                </div>
+            </div>
+            <div class="panel">
+                <a class="panel-heading collapsed" role="tab" id="headingThree" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    <h4 class="panel-title">Collapsible Group Items #3</h4>
+                </a>
+                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                    <div class="panel-body">
+                        <p>
+                            <strong>Collapsible Item 3 data</strong>
+                        </p>
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor
+                    </div>
+                </div>
+            </div>*@
+    </div>
+</div>
