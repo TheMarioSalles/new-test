@@ -44,6 +44,7 @@
     <Compile Include="Desktop\IDesktopExtendElement.cs" />
     <Compile Include="Desktop\IDesktopBaseElement.cs" />
     <Compile Include="DriverContextInfo.cs" />
+    <Compile Include="KeyboardEnum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Web\BrowserEnum.cs" />
     <Compile Include="Web\IWebExtendElement.cs" />
