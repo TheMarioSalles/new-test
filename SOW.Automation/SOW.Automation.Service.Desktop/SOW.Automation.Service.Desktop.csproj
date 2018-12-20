@@ -1,55 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
   <PropertyGroup>
+    <ProjectGuid>{7C3476CA-9BFA-4F06-8748-E663664CE97D}</ProjectGuid>
+    <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{59776340-CAF3-4DB9-AA17-6D43E7E807DC}</ProjectGuid>
     <OutputType>Library</OutputType>
+    <RootNamespace>SOW.Automation.Service.Desktop</RootNamespace>
+    <AssemblyName>SOW.Automation.Service.Desktop</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SOW.Automation.Service.Tasy</RootNamespace>
-    <AssemblyName>SOW.Automation.Service.Tasy</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <Optimize>True</Optimize>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
     <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Castle.Core">
-      <HintPath>..\..\..\..\Sow\Development\SOW.Automation\SOW.Automation\SOW.Automation.Driver.TestStack\bin\Debug\Castle.Core.dll</HintPath>
+      <HintPath>..\packages\Castle.Core.3.3.0\lib\net40-client\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
     <Reference Include="TestStack.White">
-      <HintPath>..\..\..\..\Sow\Development\SOW.Automation\SOW.Automation\SOW.Automation.Driver.TestStack\bin\Debug\TestStack.White.dll</HintPath>
-    </Reference>
-    <Reference Include="TestStack.White.Reporting">
-      <HintPath>..\..\..\..\Sow\Development\SOW.Automation\SOW.Automation\SOW.Automation.Driver.TestStack\bin\Debug\TestStack.White.Reporting.dll</HintPath>
-    </Reference>
-    <Reference Include="TestStack.White.ScreenObjects">
-      <HintPath>..\..\..\..\Sow\Development\SOW.Automation\SOW.Automation\SOW.Automation.Driver.TestStack\bin\Debug\TestStack.White.ScreenObjects.dll</HintPath>
+      <HintPath>..\packages\TestStack.White.0.13.3\lib\net40\TestStack.White.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -57,12 +54,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\SOW.Automation.Common\SOW.Automation.Common.csproj">
-      <Project>{05ca1dec-b508-4455-ad76-163ee4274303}</Project>
+      <Project>{2d2c3320-8eb2-4dcb-8160-3ce5d4a8a668}</Project>
       <Name>SOW.Automation.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\SOW.Automation.Driver.TestStack\SOW.Automation.Driver.TestStack.csproj">
-      <Project>{773c6f84-76d6-4a13-9907-c60ec301000d}</Project>
+      <Project>{177d9645-7dee-4bf2-b066-fb0fb2ecac3c}</Project>
       <Name>SOW.Automation.Driver.TestStack</Name>
     </ProjectReference>
   </ItemGroup>
