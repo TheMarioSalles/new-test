@@ -7,15 +7,9 @@ namespace SOW.Automation.Service.Web
 {
     public class WebService
     {
-        private WebDriverContextInfo _driverContextInfo;
+        public WebDriverContextInfo DriverContextInfo { get;  set; }
 
-        public WebDriverContextInfo DriverContextInfo
-        {
-            get { return _driverContextInfo; }
-            set { _driverContextInfo = value; }
-        }
-
-        public IWebBaseElement<IWebElement> BaseWebElement { get; private set; }
+        public IWebBaseElement<IWebElement> BaseElement { get; private set; }
 
         public WebService(WebDriverContextInfo context)
         {
@@ -29,7 +23,7 @@ namespace SOW.Automation.Service.Web
             switch (this.DriverContextInfo.Driver)
             {
                 case DriverEnum.Selenium:
-                    BaseWebElement = new SeleniumAutomate<IWebElement>(this.DriverContextInfo);
+                    BaseElement = new SeleniumAutomate<IWebElement>(this.DriverContextInfo);
                     break;
             }
         }

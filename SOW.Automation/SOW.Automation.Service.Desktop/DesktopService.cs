@@ -15,7 +15,7 @@ namespace SOW.Automation.Service.Desktop
             set { _driverContextInfo = value; }
         }
 
-        public IDesktopExtendElement<IUIItem> BaseElement;
+        public IDesktopBaseElement<IUIItem> BaseElement;
 
         public DesktopService(DesktopDriverContextInfo driverContextInfo)
         {
@@ -45,7 +45,7 @@ namespace SOW.Automation.Service.Desktop
             }
         }
 
-        private void UpdateDriver(IDesktopExtendElement<object> desktopExtendElement)
+        private void UpdateDriver(IDesktopBaseElement<object> desktopExtendElement)
         {
             try
             {

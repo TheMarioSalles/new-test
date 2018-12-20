@@ -4,5 +4,8 @@
     {
         public bool MaximizeWindow { get; set; }
         public BrowserEnum Browser { get; set; }
+        
+        
+       
     }
 }
