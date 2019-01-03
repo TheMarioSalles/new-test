@@ -47,42 +47,49 @@ namespace Sow.Interfaces.AdminWAPP.WebApi.Controllers
         [HttpPost("Authenticate")]
         public async Task<IActionResult> Authenticate([FromBody]UserDto userDto)
         {
-            var user = await _userService.Authenticate(userDto.Username, userDto.Password);
-
-            if (user == null)
-                return BadRequest(new { message = "Usuário ou Senha inválido." });
-
-            ClaimsIdentity lc = new ClaimsIdentity(new Claim[]
+            try
             {
+                var user = await _userService.Authenticate(userDto.Username, userDto.Password);
+
+                if (user == null)
+                    return BadRequest(new { message = "Usuário ou Senha inválido."});
+
+                ClaimsIdentity lc = new ClaimsIdentity(new Claim[]
+                {
                 new Claim(ClaimTypes.NameIdentifier, user.Id),
                 new Claim(ClaimTypes.Name, user.Username)
-            });
+                });
 
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_appSettingsHelper.Secret);
-            var tokenDescriptor = new SecurityTokenDescriptor
-            {
-                Subject = lc,
-                Expires = DateTime.UtcNow.AddMinutes(10),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-            };
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            userDto.Token = tokenHandler.WriteToken(token);
-            userDto.Id = user.Id;
+                var tokenHandler = new JwtSecurityTokenHandler();
+                var key = Encoding.ASCII.GetBytes(_appSettingsHelper.Secret);
+                var tokenDescriptor = new SecurityTokenDescriptor
+                {
+                    Subject = lc,
+                    Expires = DateTime.UtcNow.AddMinutes(10),
+                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+                };
+                var token = tokenHandler.CreateToken(tokenDescriptor);
+                userDto.Token = tokenHandler.WriteToken(token);
+                userDto.Id = user.Id;
 
-            var identity = new ClaimsIdentity(
-                new Claim[]{
+                var identity = new ClaimsIdentity(
+                    new Claim[]{
                     new Claim(ClaimTypes.NameIdentifier, user.Id),
                     new Claim(ClaimTypes.Name, user.Username)
-                },
-                JwtBearerDefaults.AuthenticationScheme
-            );
+                    },
+                    JwtBearerDefaults.AuthenticationScheme
+                );
 
-            var principal = new ClaimsPrincipal(identity);
+                var principal = new ClaimsPrincipal(identity);
 
-            await HttpContext.SignInAsync("Bearer", principal);
-
-            return Ok(userDto);
+                //await HttpContext.SignInAsync("Bearer", principal);
+                return Ok(userDto);
+            }
+            catch(Exception e)
+            {
+                return Ok(userDto);
+            }
+            
         }
 
         [AllowAnonymous]
