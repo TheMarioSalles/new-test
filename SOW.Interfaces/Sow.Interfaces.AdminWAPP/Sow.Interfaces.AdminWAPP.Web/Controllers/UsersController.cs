@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -7,9 +8,13 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Authentication;
+using Microsoft.AspNetCore.Http.Features.Authentication;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using Sow.Interfaces.AdminWAPP.Domain.Dtos.Entities;
 
@@ -56,24 +61,33 @@ namespace Sow.Interfaces.AdminWAPP.Web.Controllers
                         HttpContext.Session.SetString("Id", user.Id);
                         HttpContext.Session.SetString("Token", user.Token);
                         HttpContext.Session.SetString("Username", user.Username);
+                        /*
+                        new AuthorizeAttribute();
+                        */
+                        /*
+                        Microsoft.AspNetCore.Http.Authentication.AuthenticationProperties options = new Microsoft.AspNetCore.Http.Authentication.AuthenticationProperties();
+                        options.AllowRefresh = true;
+                        options.IsPersistent = true;
+                        //options.ExpiresUtc = DateTime.UtcNow.AddSeconds(int.Parse(user.Token));
 
-                        Redirect("~/Clients/ClientsList");
+                        IEnumerable<Claim> claims = new[]
+                        {
+                            new Claim(ClaimTypes.Name, user.Username),
+                            new Claim("AcessToken", string.Format("Bearer {0}", user.Token)),
+                        };
+                        var identity = new ClaimsIdentity(claims, "ApplicationCookie");
+                        //var authProperties = new Microsoft.AspNetCore.Authentication.AuthenticationProperties { };
 
-                        //AuthenticationProperties options = new AuthenticationProperties();
-
-                        //options.AllowRefresh = true;
-                        //options.IsPersistent = true;
-                        ////options.ExpiresUtc = DateTime.UtcNow.AddSeconds(int.Parse(token));
-
-                        //var claims = new[]
-                        //{
-                        //    new Claim(ClaimTypes.Name, user.Username),
-                        //    new Claim("AcessToken", string.Format("Bearer {0}", user.Token)),
-                        //};
-
-                        ////var identity = new ClaimsIdentity(claims, "ApplicationCookie");
-
-                        //Request.GetOwinContext().Authentication.SignIn(options, identity);
+                        await HttpContext.SignInAsync("Bearer", new ClaimsPrincipal(identity));
+                        //await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity), authProperties);
+                        */
+                        IEnumerable<Claim> claims = new[]
+                        {
+                            new Claim(ClaimTypes.Name, user.Username),
+                            new Claim("AcessToken", string.Format("Bearer {0}", user.Token)),
+                        };
+                        
+                        return RedirectToAction("ClientsList", "Clients");
 
                     }
                     else
@@ -86,8 +100,6 @@ namespace Sow.Interfaces.AdminWAPP.Web.Controllers
             {
                 return Unauthorized();
             }
-            
-            return View();
         }
     }
 }

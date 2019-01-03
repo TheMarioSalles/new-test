@@ -81,7 +81,7 @@ namespace Sow.Interfaces.AdminWAPP.WebApi.Controllers
                 );
 
                 var principal = new ClaimsPrincipal(identity);
-
+                //Request.GetOwinContext().Authentication.SignIn();
                 //await HttpContext.SignInAsync("Bearer", principal);
                 return Ok(userDto);
             }

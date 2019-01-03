@@ -17,9 +17,10 @@ using Sow.Interfaces.AdminWAPP.Domain.Dtos.Entities;
 namespace Sow.Interfaces.AdminWAPP.Web.Controllers
 {
     //[Authorize("Bearer")]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class ClientsController : Controller
     {
+        //[AllowAnonymous]
         public IActionResult ClientsList()
         {
             IEnumerable<ClientDto> Clients = null;
