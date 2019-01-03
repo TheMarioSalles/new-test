@@ -59,6 +59,11 @@ namespace Sow.Interfaces.AdminWAPP.Web.Controllers
             return View();
         }
 
+        public IActionResult EndPoint()
+        {
+            return View();
+        }
+
         [HttpPost]
         public async Task<IActionResult> Create(ClientDto client)
         {
