@@ -3,16 +3,64 @@
     ViewData["Title"] = "EndPoint";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link rel="stylesheet" type="text/css" href="~/js/DataTables/datatables.min.css" />
+<script type="text/javascript" src="~/js/jquery.js"></script>
+<script type="text/javascript" src="~/js/DataTables/datatables.min.js"></script>
+<script type="text/javascript" src="~/js/Scripts/EndPoint.js"></script>
+<div id="panelCreateEndPoint" class="col-xs-12 panel panel-default">
+    <div id="createEndPoint" class="col-xs-12">
+        <h3>End Point</h3>
 
-<h2>EndPoint</h2>
+        <form class="form-horizontal" asp-action="CreateEndPoint">
+            <div class="form-group">
+                <div id="nameEndpoint" class="col-xs-12" style="margin: 1%">
+                    <div id="labelName" class="col-xs-1">
+                        @Html.DisplayNameFor(model => model.Name)
+                    </div>
+                    <div id="boxName" class="col-xs-11">
+                        @Html.TextBox("myTextBoxName", "", new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div id="pathEndPoint" class="col-xs-12" style="margin: 1%">
+                    <div id="labelPath" class="col-xs-1">
+                        @Html.DisplayNameFor(model => model.Path)
+                    </div>
+                    <div id="textBoxPath" class="col-xs-11">
+                        @Html.TextBox("myTextBoxPath", "", new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div id="descriptionEndPoint" class="col-xs-12" style="margin: 1%">
+                    <div id="labelDescription" class="col-xs-1">
+                        @Html.DisplayNameFor(model => model.Description)
+                    </div>
+                    <div id="textBoxDescription" class="col-xs-11">
+                        @Html.TextBox("myTextBoxDescription", "", new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary pull-right" value="Salvar" />
+            </div>
+        </form>
 
-<div id="painelConta" class="col-xs-12 panel panel-default">
-    Conta
-    <div id="dadosConta" class="col-xs-12">
-        <div id="nomeConta"></div>
-        <div id="cnpjConta"></div>
-        <div id="painelEndPoint" class="col-xs-12 panel panel-body">
-            <table class="table table-bordered">
+
+
+
+
+
+
+
+    </div>
+</div>
+<div id="panelListingEndPoint" class="col-xs-12 panel panel-default">
+    <div id="listEndPoints" class="col-xs-12">
+        <h3>Listagem de End Points</h3>
+        <div id="panelEndPoint" class="col-xs-12 panel panel-body">
+            <table id="tableEndPoint"  class="table table-bordered">
                 <thead>
                     <tr>
                         <th>
@@ -27,54 +75,48 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if ((Model.Count().Equals(0)))
+                    @if (Model != null)
+                    {
+                        if ((Model.Count().Equals(0)))
+                        {
+                            <tr>
+                                <td colspan="6">
+                                    <p>Nenhum End Point.</p>
+                                </td>
+                            </tr>
+                        }
+                        else
+                        {
+                            foreach (var ep in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => ep.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => ep.Path)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => ep.Description)
+                                    </td>
+                                </tr>
+                            }
+                        }
+
+                    }
+                    else
                     {
                         <tr>
                             <td colspan="6">
                                 <p>Nenhum End Point.</p>
-                                <p>
-                                    <a data-toggle="modal" data-target=".new-client">Deseja criar um novo <strong>End Point</strong>?</a>
-                                </p>
                             </td>
                         </tr>
                     }
-                    else
-                    {
-                        @foreach (var ed in Model)
-                        {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => ed.Name)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => ed.Path)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => ed.Description)
-                                </td>
-                                <td>
-                                    <button class="btn btn-danger" data-toggle="modal" data-target=".update-client-@ed.Id">
-                                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                                    </button>
-                                    <div class="modal fade update-client-@ed.Id" tabindex="-1" role="dialog" aria-hidden="true">
-                                        <div class="modal-dialog modal-lg">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal">
-                                                        <span aria-hidden="true">×</span>
-                                                    </button>
-                                                    <h4 class="modal-title" id="title-new-client-@ed.Id">Alterar cliente @ed.Name</h4>
-                                                </div>
-                                                @await Component.InvokeAsync("Client", new { clientId = ed.Id })
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        }
-                    }
+
+
                 </tbody>
             </table>
+            <input type="submit" class="btn btn-primary" value="Adicionar End Point" />
         </div>
     </div>
 </div>
