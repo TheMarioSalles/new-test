@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <AssemblyName>MarioLucci.Ituran.Domain</AssemblyName>
+    <RootNamespace>MarioLucci.Ituran.Domain</RootNamespace>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+
+</Project>
