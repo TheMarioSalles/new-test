@@ -1,0 +1,74 @@
+﻿@model IEnumerable<MarioLucci.Ituran.Domain.Dtos.Entities.CurrencyDto>
+
+@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+</head>
+<body>
+    <div class="clearfix"><br /><br /><br /><br /><br /><br /></div>
+    <div class="panel-heading">
+        <div class="panel-title text-center">
+            <h1 class="title">MarioLucci | Ituran</h1>
+            <hr />
+        </div>
+    </div>
+    <div class="main-login main-center">
+        <form class="form-horizontal" asp-action="Exchange">
+            <div class="form-group">
+                <div class="col-md-10">
+                    <div class="input-group">
+                        @*Html.DropDownListFor(
+                            new SelectList(Model)
+                            )*@
+                        <label for="CurrencyName" class="col-md-4">Moedas</label>
+                        <select name="CurrencyName" class="col-md-4 col-md-offset-4">
+                            @foreach (var item in Model)
+                            {
+                                <option value="@item.ShortName">@item.Name</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <h1>Tabela</h1>
+                    @if (Model.Count().Equals(0))
+                    {
+                        <div class="row">
+                            <div class="col-sm-6">Nenhuma moeda encontrada!</div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="row">
+                            <div class="col-sm-6">Moeda / Abreviação</div>
+                            <div class="col-sm-6">Valor</div>
+                        </div>
+                        @foreach (var item in Model)
+                        {
+                            <div class="row" id="currency{@item.ShortName}">
+                                <div class="col-sm-6">@item.Name / @item.ShortName</div>
+                                <div class="col-sm-6">@item.Value</div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+<script>
+    function Highlight() {
+        var x = document.getElementsByName("CurrencyName").value;
+        document.getElementById("currency" + x).style = "background-color: dark-green;color:lime-green;";
+    }
+</script>

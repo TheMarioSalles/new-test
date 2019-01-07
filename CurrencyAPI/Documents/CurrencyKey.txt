@@ -1,0 +1,5 @@
+Link:
+http://www.apilayer.net/api/live?access_key=7551725f19ea0c7a157d4e182a37484c
+
+Key:
+7551725f19ea0c7a157d4e182a37484c
