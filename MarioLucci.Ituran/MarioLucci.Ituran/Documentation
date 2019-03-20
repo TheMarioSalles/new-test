@@ -1,0 +1,8 @@
+WEBAPI
+MarioLucci.Ituran.Api
+Listar todas as moedas e suas respectivas propriedades
+http://localhost:53191/api/Currency
+Listar propriedades da moeda selecionada. Ex.: BRL
+http://localhost:53191/api/Currency/Get/BRL
+Converter moedas: De - Para
+http://localhost:53191/api/Currency/Convert/BRL/USD
